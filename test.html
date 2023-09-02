@@ -1,53 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
-    #table1 {
-        /* Estilos para a tabela com id="table1" */
-        border-collapse: collapse;
-        width: 50%;
-    }
-
-    #table1 th, #table1 td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: center;
-    }
-
-    #table2 {
-        /* Estilos para a tabela com id="table2" */
-        border-collapse: collapse;
-        width: 25%;
-    }
-
-    #table2 th, #table2 td {
-        border: 1px solid red; /* Exemplo de estilo diferente */
-        padding: 8px;
-        text-align: center;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulating a Table with JavaScript</title>
 </head>
 <body>
-    <table id="table1">
+    <table id="myTable">
         <tr>
-            <th>Header 1</th>
-            <th>Header 2</th>
+            <th>Name</th>
+            <th>Age</th>
         </tr>
         <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
+            <td>John</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>Alice</td>
+            <td>25</td>
         </tr>
     </table>
 
-    <table id="table2">
-        <tr>
-            <th>Header A</th>
-            <th>Header B</th>
-        </tr>
-        <tr>
-            <td>Data A</td>
-            <td>Data B</td>
-        </tr>
-    </table>
+    <button onclick="addRow()">Add Row</button>
+    <button onclick="editCell()">Edit Cell</button>
+    <button onclick="deleteRow()">Delete Row</button>
+
+    <script>
+        function addRow() {
+            const table = document.getElementById("myTable");
+            const newRow = table.insertRow(-1); // -1 appends the row at the end
+
+            const nameCell = newRow.insertCell(0);
+            nameCell.innerHTML = "New Name";
+
+            const ageCell = newRow.insertCell(1);
+            ageCell.innerHTML = "New Age";
+        }
+
+        function editCell() {
+            const table = document.getElementById("myTable");
+            const cellToEdit = table.rows[1].cells[0]; // Edit the first cell of the second row
+            cellToEdit.innerHTML = "Edited Name";
+        }
+
+        function deleteRow() {
+            const table = document.getElementById("myTable");
+            table.deleteRow(1); // Delete the second row
+        }
+    </script>
 </body>
 </html>
